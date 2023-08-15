@@ -1,0 +1,43 @@
+Manual de exemplo para criação de scripit:
+
+Um scripit e uma sequencia de comandos com algum proposito. Neste exemplo, o scripit criado sera uma sequencia para copiar um arquivo\diretorio ao qual um usuario informara o caminho.
+
+1 - Ao iniciar a criação de uma scripit o arquivo precisa conter em sua primeira linha o comando '#!/bin/bash', que indica qual bash sera utilizado:
+
+#!/bin/bash
+
+=======================================
+2 - para realizaremos um input no terminal do usuario, utilizaremos o comando 'echo' seguido pelo um texto que deve ser impresso:
+
+echo "digite o diretorio para backup"
+
+=======================================
+3 - O caminho digitado pelo usuario sera atribuido a uma variavel, para isso, utilizasse o comando 'read':
+
+read diretorio_bkp
+
+=======================================
+4 - Para realizar a copia do path indicado pelo usuario (que foi atribuida na varaivel diretorio_bkp) utilizaremos os comandos:
+
+cp -rv $diretorio_bkp > ~/backup
+
+osb. O cifrao e o comando utilizado para que a leitura seja do conteudo 'diretorio_bkp' variavel, ou seja, do caminho que o usuario indicou no passo 2.
+
+O comando 'cp -rv': cp para realizar copia; -r indica que deve ser de forma recursiva; v para screver no terminar cada linha copiada;
+
+echo ""
+echo "backup realizado com sucesso"
+
+=======================================
+5 - Apos a criação de um script, e necessario alterar a forma de execução do arquivo:
+chmod u+x nomeDoArquivoComScript.sh
+
+Este comando altera a permissao do arquivo, tranformando em executavel.
+
+=======================================
+6 - Para que o script seja execultado a partir de qualquer diretorio do sistema, é necessario incluir a pasta /home/bin. Caso exista esta pasta, o sistema inclui todos os arquivos execultaveis ali presentes, como variavel de ambiente:
+
+mkdir /home/bin | cp -r scripit /home/bin
+
+
+

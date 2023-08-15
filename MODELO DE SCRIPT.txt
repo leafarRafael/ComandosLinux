@@ -1,0 +1,9 @@
+MODELO DE SCRIPT
+
+
+#!/bin/bash
+echo "Digite o diretorio para Backup: "
+read diretorio_bkp
+cp -rv $diretorio_bkp ~/backup
+echo ""
+echo "BackUp realizado com sucesso!"

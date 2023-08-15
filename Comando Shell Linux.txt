@@ -1,0 +1,474 @@
+Comando ssh para acessar uma maquina virtual remotamente.
+
+ssh = para acessar remotamente, usa ssh nomeDeUsuario@endereçodeip
+ssh -X usuario@ip +SENHA = acessa de forma grafica sistema alheio
+
+
+=======================================================================================================
+Comando ls para visualizar conteudo no local\diretorio.
+
+ls = para verificação do itens contidos no diretorio
+ls -l = verifica os itens e as permissoes de execução
+ls -a = lista inclusive conteudos ocultos
+ls -la = combina os resultados acima
+ls -lh = retorna com uma leitura mais amigavel.
+ls parametroDepesquisa = retorna como resultado todos os arquivos que contenham o parametro
+ls *l* = retorna todo conteudo que contenha a letra l entre uma cadeia de caracteres
+ls ??l = retorna todo conteudo que contenha 3 caracteres e terminem com l
+ls ??l?? = retorna todo conteudo com 5 caracteres e que contenha l como terceiro caracter
+
+======================================================================================================
+Comando lshw para informações de hardware
+
+sudo lshw -c nomeDoHardware = retorna especificações do hardware selecionado
+sudo lshw = retorna a lista de hardware
+sudo lshw -short = retorna os dados de hardware de forma resumida
+=======================================================================================================
+Comando fdisk para informações de armazenamento
+
+fdisk -l = retorna informações do disco, como partições, espaco livre e etc.
+sudo fdisk /dev/sdb (caminho do disco no sistema) = retorna ferramenta de formatação de disco
+
+=======================================================================================================
+Comando mkfs para formatação de disco
+
+sudo mkfs -t ext4 /dev/sdb1 = Formata o disco no sistema de arquivos ext4.
+sudo mkfs. = retorna as opções de formatação de disco
+
+=======================================================================================================
+Comando mount retorna informações dos dispositivos montadados no sistema
+
+mount = retorna informações dos dispositivos
+
+mount = Para disponibilizar um disco para leitura, no linux, acessar a pasta /media/, criar uma pasta com nome do disk, para ser atribuido como ponto de montagem.
+
+sudo mount /dev/sdb1 /media/disk2/ = apos criar o ponto de montagem, apontamos o disco fisico para o ponto de montagem
+
+(mount) cat /etc/fstab = Para que um disco permaneça acessivel, devemos alterar as configurações de sistema
+
+sudo blkid = retorna o id do dispositivo
+
+======================================================================================================
+Comando systemctl para administração de aplicações
+
+sudo systemctl = Assim como service, é utilizado para adiministrar serviços
+
+
+=======================================================================================================
+Comando glob [*] [?] para uso de filtro de pesquisa
+
+ls ???[1-5] = pesquisa retornaria palavras com 4 caracteres e que terminam entre 1 e 5.
+ls ??? [1-5]* = pesquisa retornaria arquivos, pastas que terminam com contendo 4 ou mais caractes, onde
+do 1 ao 5 sejam o quarto caracteres, o podendo ter infinitos caracteres
+
+ls ??[1,5] = retorna todo o conteudo com 3 caracteres que terminam com 1 ou 5. A virgula e usada para definir
+um argumento ou outro.
+
+ls [A,a]??[1-5] = neste exemplo, o retorno seria todos os arquivos que contenha a letra A, maiuscula ou minuscula,
+seguidos de dois caracteres indefinidos e que terminem entre 1 e 5
+
+=======================================================================================================
+Comando cat para o prompt imprimir o conteudo do arquivo selecionado
+cat nomedoArquivo = retorna o conteudo do arquivo
+
+=======================================================================================================
+Comando grep para localizar uma cadeia especifica de caracteres dentro de um aquivo
+grep cadeiaDeCaracteres nomeDoArquivo = retono sera o conteudo digitado como cadeia de caracteres existentes no
+arquivos.
+
+grep -i caracteres arquivo = retorna a cadeia de caracteres ignorando maiusculas e minusculas
+grep -l cadeiaDeCaracteres * = Seleciona os arquivos que contenham os termos de pesquisa, dentro da pasta atual
+grep -L cadeiaDeCaracteres * = Seleciona os arquivos que não contenha os termos de pesquisaiii dentro da pasta atual
+grep -E "^z" arquivo = filtraria todas as palavras que comece com a letra Z
+grep -E "z$" arquivo = filtraria todas as palavras que terminam com a letra Z
+cat arquivo | grep "^..oot$" = Neste caso, filtraria palavras que contenha 5 letras e termine com oot
+cat arquivo | grep "^[lmnj]oot$" = retorno seria todas as palavras que contenham as letras entre [] e que terminem com oot
+cat arquivo | grep "^[g-n]oot$" = retorno considera o todas as letras entre G e N, quem terminem com oot
+
+cat arquivo | grep -E "^computer$" = filtraria a palavra "computer" entre uma cadeia de palavras de um arquivo
+egrep "^computer$ arquivo = o egrep pussui a mesmo retorno que 'grep -E', neste caso, retornando a palavra computer
+cat aquivo | grep -iE "smartphone|computer" = retornaria ambas palavras.
+cat arquivo | grep -iE "^smart$|^computer$" = retornaria apenas as duas palavras mesmo que façam parte da composição de outras
+
+=======================================================================================================
+Comando ip para vizualização de dados de rede
+
+ip addr = lista as redes e seus respectivos ips
+ping localhost = ip local da maquina, eu acho..
+hostname -I = retorna o ip da maquina
+ip route = retorna um tabela de rotas e ips configurados
+
+
+=======================================================================================================
+Comando sudo para execução em modo administrativo
+
+sudo
+sudo su = altera e mantem o usuario como adiministrador
+
+exemplo: sudo apt update | sudo 'nome de alguma aplicação' install | sudo ls -l caminho
+
+=======================================================================================================
+Comando apt para ferramenta de gerenciamento
+
+apt update = atualizar a ferramenta de gerenciamento
+sudo apt-get install nomeDaAplicação = realiza o download e instação da aplicação
+sudo apt search nomeDaAplicação = realiza pesquisa na internet sobre os arquivos de acordo com o nome escrito para pesquisar"'
+
+apt list --upgradable = retorna os aplicativos que possuem atualização
+sudo apt remove nomeDaAplicação = remove a aplicação selecionada
+exemplo: apt install openssh-server (instala o gerenciador de acesso remoto)
+
+=======================================================================================================
+Comando pwd para identificar o diretorio recorrente
+
+pwd = indentifica a pasta onde o usuario se encontra
+
+=======================================================================================================
+Comando touch para criação de arquivo
+
+touch nomeDoArquivo.formato = cria arquivo
+touch nomeDoArquivo.formato /caminho = cria o arquivo no caminho especificado
+touch .nomedoarquiv = cria um arquivo oculto
+touch nome\ do\ arquivo = cria uma arquivo considerando espaços na nomenclatura
+
+=======================================================================================================
+Comando help para ajuda
+pwd --help = retorna as possiveis combinações
+exemplo: apt --help | ls --help
+
+=======================================================================================================
+Comando man para abertura do manual
+man ls = abre o manual ls
+man apt = abre o manual do gerenciador
+
+=======================================================================================================
+Comando clear para limpar a tela
+clear = limpa a tela
+atalho ctrl + l
+
+=======================================================================================================
+Comando cd para navegar entre pastas/diretorios
+
+cd .. = retorna para pasta anterior
+cd nomeDoDiretorio = direciona para o diretororio
+cd - = retorna para o diretorio anterior a mudança
+=======================================================================================================
+Comando mkdir para criação de pastas
+mkdir nomeDaPastaASerCriada = cria uma pasta
+
+exemplo: mkdir novaPasta
+
+exemplo para criar pastas a partir de outro diretorio:
+mkdir /PastaJaExiste/criaNovaPasta
+
+exemplo de criação de diretorio encadeados:
+mkdir -p novaPasta1/NovaPasta2/novaPasta3 = cria uma pasta dentro da outra
+mkdir nova\ pasta = cria uma nova pasta considerando o espaço como parte da nomenclatura
+
+
+=======================================================================================================
+Comando rm e rmdir para remover arquivos e diretorios
+
+rm nomeDoArquivo = apaga uma arquivo em branco
+rm -r = apaga qualquer arquivo ou diretorio, contendo ou nao conteudos
+rm -rf = apaga arquivos incluido bloqueados por qualquer tipo de sistema de proteçao
+rmdir nomeDoDiretorio = apaga um diretorio vazio
+rmdir -r = apaga qualquer diretorio contendo ou nao conteudo.
+
+=======================================================================================================
+Comando cp para copiar um arquivo ou diretorio
+
+cp -r diretorioOrigem diretorioDestino = copia um diretorio 'origem' para 'diretorio' destino
+cp -r diretorioOrigem* diretorioDestido = copia tudo que existem dentro do diretorio para o destino
+cp -r arquivoOrigem desdino/nomeDoNovoArquivo = copia um diretorio para o destino
+
+=======================================================================================================
+Comando mv para mover e tambem renomear um diretorio ou arquivo
+
+mv pastaOrigem1 pastaDestino2 = Cenario 1: Caso não exista o diretorio pastaDestino2 renomeia a pasta1
+                                Cenario 2: Caso exista pastaDestino2 envia a pastaOrigem1 para o destino
+mv arquivo.txt endereço/pastaDestino = envia o arquivo para a pasta destino
+
+=======================================================================================================
+Comando history para retornar o historico de feitos no bash
+
+history = retorna o historico do bash
+=======================================================================================================
+Comando more para trazer o conteudo pesquisado de forma paginada.
+
+more nomeDoAquivo = retorna de forma paginada o conteudo do arquivo
+
+more = dentro do conteudo, com a pagina formatada, as seguintes teclas para atalho
+'b' para retornar uma pagina
+'q' para sair
+'espaço' para saltar de pagina em pagina.
+'enter' para avançar linha a linha.
+
+=======================================================================================================
+Comando less para verificar 10 linhas finais do conteudo
+less nomeDoArquivo = retorno de forma pagina, com melhores recursos de atalho
+
+
+=======================================================================================================
+Comando tail para que o retorno do conteudo do arquivo seja resumido as 10 ultimas linhas como defult
+
+tail nomeDoArquivo = retorna as 10 ultimas linhas
+tail -n 20 nomeDoAquivo = retorna as 20 ultimas linhas.
+tail -f arquivo/diretorio = mantem a tela de retorno aberta, atualizando em tempo real quaisquer alterações no sistema.
+
+
+=======================================================================================================
+Comando head para que o output seja das 10 primeiras limnhas do arquivo
+head nomeDoarquivo = retorna as 10 primeiras linhas do arquivo
+head -n 3 = retorna as 3 primeiras linhas do arquivo
+
+=======================================================================================================
+Comando find para localizar tipos de arquivos nos diretorios do sistema
+
+find / -name .formatoDoArquivo = a pesquisa retornará todos os diretorios que contenham arquivos do tipo '.formatoDoAquivo'
+find / -maxdepth 2 -name .formatoDoArquivo = maxdepth limitará o retorno a quantidade de subdiretorios numerado, sendo neste caso, 2.
+find /diretorio -amin -5 = retornará todos os arquivos que foram alterados nos ultimos 5 minutos
+find /diretornio -atime -2 = retornará todos os aquivos que foram alterados nos ultimos dois dias
+find / -size +100M = retorno sera de todos os aquivos que contenham mais de 100 megas
+
+
+=======================================================================================================
+Comando > e >> para que o output seja direcionado para um arquivo
+
+cat nomeDoArquivo | grep parametro de pesquisa > crieUmArquivo = Criaria um arquivo com os dados do grep
+cat nomeDoArquivo | grep parametroDePEsquisa >> arquivo = inclui os dados do grep ao arquivo.
+Caso > seja utilizado sozinho, o arquivo sera sobescrito. Para inclusão de conteudo, utilizasse >> duas setas\maior
+
+=======================================================================================================
+Comando | pipe, para utilizar uma cadeia de comandos
+mkdir novaPasta | cp arquivo novapasta | cat arquivo | grep http > listaDehttp.txt
+| criaria uma pasta, copiaria um arquivo para pasta, faria o output do conteudo, selecionaria dentro do conteudo tudo que for http e criaria um arquivo txt chamado listadehttp.
+
+=======================================================================================================
+Comando sort para ordenação alfabetica do output
+
+cat arquivo | sort = o conteudo do arquivo retorna em ordem alfabetica
+
+=======================================================================================================
+Comando wc para output retornar quantidade de linhas palavras e bytes
+
+cat arquivo | wc = retorna a quantidade de linha e bytes do arquivo
+cat arquivo | wc -l = retorna quantidade de linhas apenas
+
+=======================================================================================================
+Comando cut  para selecionar algum dado como delimitador.
+
+cat arquivo | cut -d " " -f1 = indentifica espacos em branco como delimitador. f1 sera o primeiro dado delimitado
+cat arquivo | cut -d " " -f1,2,3 = indentificado os espacos em branco, retornaria as 3 primeiras linhas
+======================================================================================================
+Comando awk para delimitar ulgum texto, nome de arquivo e afins
+
+ls algumArquivo.txt | awk -F. '{ print $1 }' = neste exemplo, o delimitador foi o '.' ponto. Em seguida o e solicitado a impressao do primeiro campo antes do delimitador.
+
+
+=======================================================================================================
+Comando env para verificar as variaveis de ambiente
+
+env = retorna as variaveis habilitadas no ambiente
+
+=======================================================================================================
+Comando chmod para definir um script como executavel pelo sistema
+
+chmod u+x nomeDoScript = para alterar a permissao de um arquivo, para se tornar executavel pelo sistema
+chmod u+x nomeDoScript = neste exemplo o u de de UID do usuario e o x e a permissão de execuçao do arquivo.
+sudo chmod -R numeraçãoDasPermissões nomedoarquiv.txt= altera a permissão de um arquivo ou diretorio.
+
+sudo chmod o-r nomeDoDiretorio/Arquivo = Altera permissão de usuarios sobre o arquivo.
+
+sudo chmod g+s nomeDoDiretorio = Todos os subdiretorios e arquivos criados seguem com as mesmas permissoes do arquivo "pai/mae", alterado na chamada deste
+
+=======================================================================================================
+Comando chown para alterar propriedade de um grupo ou arquivo
+
+sudo chown nomeDoNovoProprietario = Altera o "dono" do arquivo
+
+=======================================================================================================
+Comando bin para inclusao de um script como variavel de sistema
+
+bin = para definir um script como variavel de sistema, e necessario criar um diretorio /home/bin. Neste caso o sistema verifica q existencia deste diretorio, e caso exista, incluirá todos os arquivos como execultaveis.
+
+
+=======================================================================================================
+Comando echo retorna o conteudo no terminal, podendo ser um texto, conteudo de uma pasta ou variavel de ambiente
+
+echo "Texto" = retorna o texto
+echo $PATH = retorna os diretorios que contem variaveis do ambiente
+
+
+=======================================================================================================
+Comando free retorna dados das memorias
+
+=======================================================================================================
+Comando ps para adiministração de processos corrente do sistema
+
+ps -e = retorna os processos correntes do sistema, indentificando 'quem' o iniciou.
+ps -ef = retorna os processos correntes, com maior detalhamento
+ps aux = retorna os processos correntes, com detalhamento como utilização de cpu, usuario, horario e arquivos alterados
+pstree = retorna os processos em formato de arvore, entre o processo principal e os demais subprocessos
+
+=======================================================================================================
+Comando top retorna de forma dinamica os processos que estão em execuçao no sistema
+
+top = retorna usuario, cpu, mem e etc.
+top -u nomeDoProcesso = retora o processo especifico
+
+Com top em execução, temos os seguintes atalhos:
+
+h = mostra as opções de nevegação
+q = retornar/sair
+P = prioriza infromações por ordem de CPU
+M = prioriza por consumo de memoria
+n = ordena por PID .
+L = permite pequisar pelo nome de algum processo
+======================================================================================================='
+Comando kill para encerrar processos do sistema
+
+kill -l = retorna opções de encerramento
+
+kill -9 5994 (numeraçãoReferenteAoProcesso) = Força o encerramento do processo. Usar com preucaução, pois sera encerrado imediatamente, sem realizar possiveis finalizações de backup e etc.
+
+
+=======================================================================================================
+Comando groups para verificar as permissoes de administrador
+
+
+
+=======================================================================================================
+Comando passwd para alterar senha de usuario
+
+=======================================================================================================
+Comando useradd e useradd para inclusão de usuarios no sistema.
+sudo useradd nomeDoUsuario = cria uma nova instancia de usuario. necessario outros passos
+sudo adduser nomeDoUsuario = cria uma nova instancia. faz a criação de todos os parametros de um usuario.
+
+
+=======================================================================================================
+Comando userdel para exclusao de usuarios do sistema
+
+sudo userdel nomeDoUsuario = Exclui um usuario do sistema
+
+
+=======================================================================================================
+Comando groupadd para criação de grupos no sistema
+
+sudo groupadd nomeDoGrupo = cria um grupo de usuarios no linux
+
+=======================================================================================================
+Comando groupdel para deletar grupos
+
+sudo groupdel nomeDoGrupo = Exclui um grupo do sistema
+
+
+=======================================================================================================
+Comando usermod para incluir usuarios a um grupo
+
+sudo usermod -aG grupo usuario = inclui um usuario a um determinado grupo . Obs o -G altera grupos secundario, -g altera o grupo primario.
+
+
+
+=======================================================================================================
+Comando su - para alternar entre usuarios do sistema.
+
+su - nomeDoUsuario = Alterna entre os usuarios do sistema.
+
+=======================================================================================================
+Comando ln para criação de link simbolico ou atalho para algum diretorio
+ln -s /caminhoDoDiretorio nomeDoAtalho = Retorna o caminho para um diretorio. Como um atalho para chagar em alguma pasta
+
+
+=======================================================================================================
+Comando jobs para visualizar os processos que foram inciados apartir do terminal
+
+jobs = retorna os processos iniciados no terminar.
+
+ctrl+z = pausa os processos iniciados no terminal
+
+
+=======================================================================================================
+Comando bg fg para trasferir um processo iniciado no terminal para backgound e vice versa
+
+bg 1 = trasfere o processo iniciado pelo terminal, para o backgroud
+
+tg 1 = retorna com o processo para o terminal
+
+=======================================================================================================
+Comando locate para pesquisar arquivos em todo o sistema
+
+locate nomeDoArquivo = retorna todos os arquivos que contenham os parametros de pesquisa
+
+=======================================================================================================
+Comando updatedb para atualizar o banco de dados de pesquisa de intens do sistema
+
+sudo updatedb = atualiza os parametros dos arquivos a serem pesquisados pelo locate
+
+=======================================================================================================
+Comando which para localizar o arquivo de execução de aplicações do sistema
+
+which nomeDaAplicação = retorna diretorio onde se encontra o executavel da aplicação 
+
+=======================================================================================================
+Comando whoami para indentificar o usuario locado no sistema
+whoami = retorna o usuario locado no sistema
+
+
+======================================================================================================
+Comando dpkg para instalar aplicativos e pacotes externos ao servidor linux
+
+sudo dpkg -i nomeDaAplicaçãoOuPacote.deb = faz a instalação de aplicações externar
+
+sudo dpkg -r nomeDaAplicaçaoOuPacote = Desinstala um programa
+
+=====================================================================================================
+Comando tar para descompactar e compctar arquivos
+tar zxf nomeDoArquivo.tar = descompacta uma arquivo
+
+
+
+======================================================================================================
+Comando scp para copiar arquivos de diretorios remotos
+
+scp arquivo usuario@ipDoUsuario:~/diretorioDestino/diretorio = copia uma arquivo de um diretorio remoto para um diretorio destino
+
+
+=======================================================================================================
+Comando $ para atribuir um parametro passado pelo usuario como variavel em um scripit 
+
+$parametro = atribui apenas um paramento
+umNomeParaVariavel in $@ = Neste exemplo a variavel imagem pode receber diversos parametros, que serão atribuidos ao script com lacos de repetição  
+if [ $? -eq 0] then = no exemplo, trataria o retorno como verdadeiro. No caso, o sinal de ? simbolisa o retorno, podendo ser 0 ou 1, sendo 0 o retorno seria positivo para função
+
+
+convert $1.txt $1.png = neste exemplo, quando usuaria chamar o scripit passando alguma parametro, este sera atribuido a variavel $1. 
+
+
+=======================================================================================================
+Comando crontab para agendamento de execução de scripts no sistema
+
+sudo crontab -e = Retorna as opções de uso do editor. Posterior, abre uma tela, onde devemos informar o minutos, horas, dias semanas e meses que deve ser execudado.
+sudo crontab -e = exemplo de preenchimento para execução do crontab:  */2 * * * * /home/rafael/Scripts/monitoracao_servidor.sh
+
+
+=====================================================================================================
+Comando ssmtp para confirgurar envio automatico de e-mail
+
+sudo gedit /etc/ssmtp/ssmtp.conf = caminho do arquivo a ser editado
+
+
+=====================================================================================================
+Comando bc para operações matematicas
+
+bc <<< "scale=2;3473320/7819768" = retorna divisao com duas casas decimais. (outras opeações com *, - e +)
+
+
+
+
+
+
+
+
+

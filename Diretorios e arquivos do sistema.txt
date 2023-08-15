@@ -1,0 +1,35 @@
+Diretorios de arquivos do sistema
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------/etc = diretorio que possui os arquivos de configuração do sistema.
+
+/etc/resolve.conf = arquivo onde fica configurado os servidores de nome
+/etc/hosts = possui um mapa com nomes para um endereço IP
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+/proc = diretorio possui informações sobre o hardwere como processador, memoria e etc..
+
+free = Comando retorna de forma resumida dados da utilização de memoria
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+/dev = diretorio contem arquivos ligados aos dispositivos
+
+df -h = Retorna de forma resumida informações como tamanho de disco, partições e etc...
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+/var/log = diretorio com informações de sistema
+
+sudo dmesg = retorna um conjunto de logs de forma resumida, trazendo a situação de status do hardware
+
+
+/var/log/syslog = no arquivo sao registrados os logs, indicando uma horario para certa execução, um problema na execução de algum programa, tentativas de invasão e ext..
+
+var/log/auth.log = retorna os registros de autenticação do sistema.
+
+tail -f aut.log = Comando mantem a tela logs de autenticação de usuario aberta, de forma estatica. Desta forma atualiza sempre que um usuario tenta realizar login
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+lshw = comando faz a listagem de hardware.
